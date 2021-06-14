@@ -40,5 +40,12 @@ namespace CodingPracticeTests
             Assert.Equal("Odd", Kata.EvenOrOdd(-1));
         }
 
+
+        [Fact]
+        public void Given_5_Return_Odd()
+        {
+            Assert.Equal("Odd", Kata.EvenOrOdd(5));
+        }
+
     }
 }
