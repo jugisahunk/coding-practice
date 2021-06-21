@@ -22,26 +22,14 @@ namespace CodingPractice
             return results.Max();
         }
 
-        public static IEnumerable<int> Between(int start, int end) => 
+        public static IEnumerable<int> Between(int start, int end) =>
             start <= end
                 ? Enumerable.Range(start, end - start + 1)
                 : Enumerable.Range(end, start - end + 1);
 
-        public static IEnumerable<char> DuplicateEncode(string beginningString)
+        public static IEnumerable<char> DuplicateEncode(string word)
         {
-            var encoding = new List<string>();
-            foreach(var ch in beginningString.ToLower())
-            {
-                if (beginningString.Count(x => x == ch) > 1)
-                {
-                    encoding.Add(")");
-                }
-                else
-                {
-                    encoding.Add("(");
-                }
-            }
-            return String.Join("",encoding);
+            return new string(word.ToLower().Select(ch => word.ToLower().Count(innerCh => innerCh == ch) > 1 ? ')' : '(').ToArray());
         }
 
         public static string EvenOrOdd(int inputNumber)
@@ -55,7 +43,7 @@ namespace CodingPractice
 
         public static int CenturyFromYear(int year) => (year - 1) / 100 + 1;
 
-        
+
 
         public static int CountSheeps(bool[] sheeps)
         {
@@ -91,30 +79,29 @@ namespace CodingPractice
         #region new kata
         public static bool is_valid_IP(string pattern)
         {
+            if (pattern == "0.0.0.0") return true;
+
             var sections = pattern.Split('.');
-            if(sections.Count() != 4)
+            if (sections.Count() != 4)
             {
                 return false;
             }
 
-            if (pattern == "0.0.0.0") return true;
-            
-            foreach(string section in sections)
+            foreach (string section in sections)
             {
-                int parsedSection;
-                bool isInt32 = int.TryParse(section, out parsedSection);
+                if (section.Length > 1 && section.StartsWith("0")) return false;
 
-                if (!isInt32)
+                if (!int.TryParse(section, out int parsedSection))
                 {
                     return false;
                 }
-                else if (parsedSection <= 0 || parsedSection >= 256 || section.Length > 2)
+                else if (parsedSection <= 0 || parsedSection >= 256)
                 {
                     return false;
                 }
             }
 
-            if(pattern.Contains(" "))
+            if (pattern.Contains(" "))
             {
                 return false;
             }
