@@ -22,6 +22,14 @@ namespace CodingPractice
             return results.Max();
         }
 
+        public static IEnumerable<int> Between(int start, int end) 
+            => Enumerable.Range(start, end - start + 1);
+
+        public static IEnumerable<char> DuplicateEncode(string beginningString)
+        {
+            throw new NotImplementedException();
+        }
+
         public static string EvenOrOdd(int inputNumber)
         {
             return inputNumber % 2 == 0
@@ -33,7 +41,7 @@ namespace CodingPractice
 
         public static int CenturyFromYear(int year) => (year - 1) / 100 + 1;
 
-        public static int[] Between(int a, int b) => Enumerable.Range(a, b - a + 1).ToArray();
+        
 
         public static int CountSheeps(bool[] sheeps)
         {
@@ -63,11 +71,6 @@ namespace CodingPractice
                 .Where(Char.IsLetter)
                 .Distinct()
                 .Count() == 26;
-
-        public static string DuplicateEncode(string word)
-        {
-            return new string(word.ToLower().Select(ch => word.ToLower().Count(innerCh => innerCh == ch) > 1 ? ')' : '(').ToArray());
-        }
 
         #endregion
 
