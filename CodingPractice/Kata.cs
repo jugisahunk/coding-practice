@@ -22,12 +22,26 @@ namespace CodingPractice
             return results.Max();
         }
 
-        public static IEnumerable<int> Between(int start, int end) 
-            => Enumerable.Range(start, end - start + 1);
+        public static IEnumerable<int> Between(int start, int end) => 
+            start <= end
+                ? Enumerable.Range(start, end - start + 1)
+                : Enumerable.Range(end, start - end + 1);
 
         public static IEnumerable<char> DuplicateEncode(string beginningString)
         {
-            throw new NotImplementedException();
+            var encoding = new List<string>();
+            foreach(var ch in beginningString.ToLower())
+            {
+                if (beginningString.Count(x => x == ch) > 1)
+                {
+                    encoding.Add(")");
+                }
+                else
+                {
+                    encoding.Add("(");
+                }
+            }
+            return String.Join("",encoding);
         }
 
         public static string EvenOrOdd(int inputNumber)
