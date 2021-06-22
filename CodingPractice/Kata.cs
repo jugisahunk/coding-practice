@@ -91,7 +91,9 @@ namespace CodingPractice
             {
                 if (section.Length > 1 && section.StartsWith("0")) return false;
 
-                if (!int.TryParse(section, out int parsedSection))
+                int parsedSection;
+
+                if (!int.TryParse(section, out parsedSection))
                 {
                     return false;
                 }
