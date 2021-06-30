@@ -6,7 +6,49 @@ namespace CodingPractice
 {
     public class Kata
     {
+        #region new kata
+
+        #endregion
+
         #region previous katas
+        public static int GetVowelCount(string str)
+        {
+            return str.Where(c => "aeiou".Contains(c)).Count();
+        }
+
+        public static bool is_valid_IP(string pattern)
+        {
+            if (pattern == "0.0.0.0") return true;
+
+            var sections = pattern.Split('.');
+            if (sections.Count() != 4)
+            {
+                return false;
+            }
+
+            foreach (string section in sections)
+            {
+                if (section.Length > 1 && section.StartsWith("0")) return false;
+
+                int parsedSection;
+
+                if (!int.TryParse(section, out parsedSection))
+                {
+                    return false;
+                }
+                else if (parsedSection <= 0 || parsedSection >= 256)
+                {
+                    return false;
+                }
+            }
+
+            if (pattern.Contains(" "))
+            {
+                return false;
+            }
+
+            return true;
+        }
         public static int ExpressionsMatter(int a, int b, int c)
         {
             int[] results = new int[]
@@ -37,8 +79,6 @@ namespace CodingPractice
                 ? "Even"
                 : "Odd";
         }
-
-        public static int GetVowelCount(string stringWithVowels) => stringWithVowels.Count("aeiou".Contains);
 
         public static int CenturyFromYear(int year) => (year - 1) / 100 + 1;
 
@@ -75,40 +115,5 @@ namespace CodingPractice
 
         #endregion
 
-        #region new kata
-        public static bool is_valid_IP(string pattern)
-        {
-            if (pattern == "0.0.0.0") return true;
-
-            var sections = pattern.Split('.');
-            if (sections.Count() != 4)
-            {
-                return false;
-            }
-
-            foreach (string section in sections)
-            {
-                if (section.Length > 1 && section.StartsWith("0")) return false;
-
-                int parsedSection;
-
-                if (!int.TryParse(section, out parsedSection))
-                {
-                    return false;
-                }
-                else if (parsedSection <= 0 || parsedSection >= 256)
-                {
-                    return false;
-                }
-            }
-
-            if (pattern.Contains(" "))
-            {
-                return false;
-            }
-
-            return true;
-        }
-        #endregion
     }
 }

@@ -1,30 +1,24 @@
 ﻿using Xunit;
 using CodingPractice;
 
-namespace CodingPracticeTests
+namespace Tests
 {
     public class VowelCountTests
     {
-
-        [Fact]
-        public void Given_word_Return_vowel_count()
+        [Theory]
+        [InlineData(5, "abracadabra")]
+        [InlineData(2, "yearly")]
+        [InlineData(0, "123")]
+        [InlineData(5, "aeiou")]
+        public void Given_Abracadabra_Return_Fivecount(int expectedVowelCount, string word)
         {
-            Assert.Equal(3, Kata.GetVowelCount("Hello World!"));
+            //Arrange (above InlineData)
+
+            //Act
+            int actualVowelCount = Kata.GetVowelCount(word);
+
+            //Assert
+            Assert.True(expectedVowelCount == actualVowelCount, $"Expected {expectedVowelCount} vowel count but received {actualVowelCount}");
         }
-
-
-        [Fact]
-        public void Given_long_word_Return_vowel_count()
-        {
-            Assert.Equal(5, Kata.GetVowelCount("abracadabra"));
-        }
-
-
-        [Fact]
-        public void Given_no_vowels_Return_count_zero()
-        {
-            Assert.Equal(0, Kata.GetVowelCount("qwrtyplkjhgsdf"));
-        }
-
     }
 }
