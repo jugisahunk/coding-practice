@@ -10,10 +10,15 @@ namespace Tests
         [InlineData(2, "yEarly")]
         [InlineData(0, "123")]
         [InlineData(10, "aeiouAEIOU")]
-        public void Given_Abracadabra_Return_Fivecount(int vowelCount, string word)
+        public void Given_Abracadabra_Return_Fivecount(int expectedVowelCount, string word)
         {
+            //Arrange (above InlineData)
+
+            //Act
             int actualVowelCount = Kata.GetVowelCount(word);
-            Assert.True(vowelCount == actualVowelCount, string.Format("Expected {0} vowel count but received {1}", vowelCount, actualVowelCount));
+
+            //Assert
+            Assert.True(expectedVowelCount == actualVowelCount, $"Expected {expectedVowelCount} vowel count but received {actualVowelCount}");
         }
     }
 }
