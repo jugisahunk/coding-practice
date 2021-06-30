@@ -5,12 +5,13 @@ namespace Tests
 {
     public class VowelCountTests
     {
-
-        [Fact]
-        public void Given_Abracadabra_Return_FiveCount()
+        [Theory]
+        [InlineData(5, "Abracadabra")]
+        [InlineData(2, "yearly")]
+        public void Given_Abracadabra_Return_Fivecount(int vowelCount, string word)
         {
-            Assert.Equal(5,Kata.GetVowelCount("Abracadabra"));
+            int actualVowelCount = Kata.GetVowelCount(word);
+            Assert.True(vowelCount == actualVowelCount, string.Format("Expected {0} vowel count but received {1}", vowelCount, actualVowelCount));
         }
-
     }
 }

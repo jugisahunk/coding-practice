@@ -21,6 +21,27 @@ namespace CodingPractice
             return results.Max();
         }
 
+        public static int GetVowelCount(string word)
+        {
+            word = word.ToLower();
+
+            char a = 'a';
+            char e = 'e';
+            char i = 'i';
+            char o = 'o';
+            char u = 'u';
+
+            int vowelCount = 0;
+
+            vowelCount += word.Count(x => x == a);
+            vowelCount += word.Count(x => x == e);
+            vowelCount += word.Count(x => x == i);
+            vowelCount += word.Count(x => x == o);
+            vowelCount += word.Count(x => x == u);
+
+            return vowelCount;
+        }
+
         public static IEnumerable<int> Between(int start, int end) =>
             start <= end
                 ? Enumerable.Range(start, end - start + 1)
@@ -37,8 +58,6 @@ namespace CodingPractice
                 ? "Even"
                 : "Odd";
         }
-
-        public static int GetVowelCount(string stringWithVowels) => stringWithVowels.Count("aeiou".Contains);
 
         public static int CenturyFromYear(int year) => (year - 1) / 100 + 1;
 
