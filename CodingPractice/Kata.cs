@@ -23,13 +23,8 @@ namespace CodingPractice
 
         public static int GetVowelCount(string word)
         {
-            char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
-
-            int vowelCount = 0;
-
-            vowelCount += word.ToLower().Count(x => vowels.Contains(x));
-
-            return vowelCount;
+            return word.ToLower()
+                       .Count(x => new char[] { 'a', 'e', 'i', 'o', 'u' }.Contains(x));
         }
 
         public static IEnumerable<int> Between(int start, int end) =>
