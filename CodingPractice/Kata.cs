@@ -23,21 +23,11 @@ namespace CodingPractice
 
         public static int GetVowelCount(string word)
         {
-            word = word.ToLower();
-
-            char a = 'a';
-            char e = 'e';
-            char i = 'i';
-            char o = 'o';
-            char u = 'u';
+            char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
 
             int vowelCount = 0;
 
-            vowelCount += word.Count(x => x == a);
-            vowelCount += word.Count(x => x == e);
-            vowelCount += word.Count(x => x == i);
-            vowelCount += word.Count(x => x == o);
-            vowelCount += word.Count(x => x == u);
+            vowelCount += word.ToLower().Count(x => vowels.Contains(x));
 
             return vowelCount;
         }
